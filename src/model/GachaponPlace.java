@@ -3,13 +3,13 @@ package model;
 public class GachaponPlace {
     private Toy toy;
     private int quantity;
-    private int fallingFrequency;
+    private int frequency;
 
 
-    public GachaponPlace(Toy toy, int fallingFrequency, int quantity) {
+    public GachaponPlace(Toy toy, int frequency, int quantity) {
         this.toy = toy;
         setQuantity(quantity);
-        setFallingFrequency(fallingFrequency);
+        setFrequency(frequency);
     }
 
     public void setQuantity(int quantity) {
@@ -21,14 +21,14 @@ public class GachaponPlace {
         return quantity;
     }
 
-    public void setFallingFrequency(int fallingFrequency) {
-        if (fallingFrequency > 100) this.fallingFrequency = 100;
-        else if (fallingFrequency < 0) this.fallingFrequency = 0;
-        else this.fallingFrequency = fallingFrequency;
+    public void setFrequency(int frequency) {
+        if (frequency > 100) this.frequency = 100;
+        else if (frequency < 0) this.frequency = 0;
+        else this.frequency = frequency;
     }
 
-    public int getFallingFrequency() {
-        return fallingFrequency;
+    public int getFrequency() {
+        return frequency;
     }
 
     public Toy releaseTheToy() {
@@ -41,7 +41,7 @@ public class GachaponPlace {
 
     @Override
     public String toString() {
+        return String.format("%s frequency :%d; quantity :%d",this.toy, this.frequency, this.quantity);
 
-        return "" + this.toy + " - " + this.fallingFrequency + " - " + this.quantity;
     }
 }

@@ -18,18 +18,13 @@ public class Toy {
         NOW_ID = NOW_ID + 1;
     }
 
-    public int getId() {
-        return id;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
     @Override
     public String toString() {
 
-        return "" + this.id + " - " + this.name;
+        return String.format("id:%d; name:%s;", this.id, this.name);
+    }
+    public String toStringCSW() {
+
+        return String.format("%d;%s", this.id, this.name);
     }
 }
