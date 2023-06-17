@@ -6,7 +6,7 @@ public class GachaponPlace {
     private int fallingFrequency;
 
 
-    public GachaponPlace(Toy toy, int quantity, int fallingFrequency) {
+    public GachaponPlace(Toy toy, int fallingFrequency, int quantity) {
         this.toy = toy;
         setQuantity(quantity);
         setFallingFrequency(fallingFrequency);
@@ -15,6 +15,10 @@ public class GachaponPlace {
     public void setQuantity(int quantity) {
         if (quantity < 0) this.quantity = 0;
         else this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setFallingFrequency(int fallingFrequency) {
@@ -27,16 +31,17 @@ public class GachaponPlace {
         return fallingFrequency;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
     public Toy releaseTheToy() {
         if (this.quantity > 0) {
             this.quantity--;
-            return this.toy;
+            return toy;
         }
         return null;
     }
 
+    @Override
+    public String toString() {
+
+        return "" + this.toy + " - " + this.fallingFrequency + " - " + this.quantity;
+    }
 }

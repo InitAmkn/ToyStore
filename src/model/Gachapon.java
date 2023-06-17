@@ -11,33 +11,55 @@ public class Gachapon {
         this.gachaList = gachaList;
     }
 
+    public void AddGachaponPlace(GachaponPlace gachaponPlace) {
+        gachaList.add(gachaponPlace);
+    }
+
+    private void removeTheVoid() {
+        for (GachaponPlace place : gachaList) {
+            if (place.getQuantity() == 0) {
+                gachaList.remove(place);
+            }
+        }
+    }
 
     public Toy releaseTheToy() {
         if (gachaList.size() < 1) return null;
-        Random r = new Random();
-        int random = r.nextInt(this.gachaList.size());
-
+        removeTheVoid();
         Toy winToy = null;
+        int sumFallingFrequency = getSumFallingFrequency();
 
-        while (winToy == null) {
-            int sumFallingFrequency = this.gachaList.get(0).getFallingFrequency();
-            for (GachaponPlace winPlace : this.gachaList) {
-                if (random > sumFallingFrequency) {
-                    sumFallingFrequency += winPlace.getFallingFrequency();
-                }
-                else {
-                    winToy = winPlace.releaseTheToy();
+        Random r = new Random();
+        int random = r.nextInt(1,sumFallingFrequency);
 
-                    if (winToy == null)
-                    {
-                        this.gachaList.remove(winPlace);
-                        break;
-                    }
-                    return winToy;
-                }
+        System.out.println("sumFallingFrequency " + sumFallingFrequency);
+        System.out.println("random " + random);
+
+        for (int i = gachaList.size() - 1; i >= 0; i--) {
+            sumFallingFrequency -= gachaList.get(i).getFallingFrequency();
+            if (random > sumFallingFrequency) {
+                winToy = gachaList.get(i).releaseTheToy();
+                break;
             }
-
-        } return null;
+        }
+        return winToy;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (GachaponPlace winPlace : this.gachaList) {
+            sb.append(winPlace);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public int getSumFallingFrequency() {
+        int sumFallingFrequency = 0;
+        for (GachaponPlace winPlace : this.gachaList) {
+            sumFallingFrequency += winPlace.getFallingFrequency();
+        }
+        return sumFallingFrequency;
+    }
 }

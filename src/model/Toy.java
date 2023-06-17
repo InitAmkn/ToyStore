@@ -7,8 +7,7 @@ public class Toy {
     private String name;
 
 
-    public Toy(String name)
-    {
+    public Toy(String name) {
         setId();
         this.name = name;
 
@@ -24,10 +23,13 @@ public class Toy {
     }
 
 
-
     public String getName() {
         return name;
     }
 
+    @Override
+    public String toString() {
 
+        return "" + this.id + " - " + this.name;
+    }
 }
