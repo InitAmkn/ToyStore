@@ -16,9 +16,10 @@ public class PlayExecutable implements CommandExecutable {
 
     @Override
     public void execute() {
-        Toy toy = gachapon.releaseTheWonToy();
-        this.answer = toy.toString();
         SaveFile saveFileWon = new SaveFileCSW();
+        Toy toy = gachapon.releaseTheWonToy();
+
+        this.answer = toy.toString();
         saveFileWon.saveWonToys(toy);
 
     }

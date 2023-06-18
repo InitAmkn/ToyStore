@@ -5,7 +5,7 @@ import model.Toy;
 
 public interface SaveFile {
 
-    public void saveWonToys(Toy wonToy);
+    void saveWonToys(Toy wonToy);
 
-    public void allToys(Gachapon gachapon);
+    void allToys(Gachapon gachapon);
 }
