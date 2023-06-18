@@ -5,27 +5,37 @@ import java.util.Random;
 
 public class Gachapon {
 
-    private final List<GachaponPlace> toysList;
+    private List<GachaponPlace> toysList;
 
-    public Gachapon(List<GachaponPlace> gachaList) {
-        this.toysList = gachaList;
+    public Gachapon(List<GachaponPlace> toysList){
+        this.toysList = toysList;
     }
-
     public void addPlace(GachaponPlace gachaponPlace) {
-        toysList.add(gachaponPlace);
+        this.toysList.add(gachaponPlace);
     }
 
-    private void removeTheVoid() {
+
+
+    public boolean deleteToyByIndex(int id) {
         for (GachaponPlace place : toysList) {
-            if (place.getQuantity() == 0) {
+            if (place.getToy().getId() == id) {
                 toysList.remove(place);
+                return true;
             }
         }
+        return false;
     }
-
+    private boolean removeTheVoid() {
+        for (GachaponPlace place : this.toysList) {
+            if (place.getQuantity() <= 0) {
+                this.toysList.remove(place);
+                return true;
+            }
+        }
+        return false;
+    }
     public Toy releaseTheWonToy() {
         if (toysList.size() < 1) return null;
-        removeTheVoid();
         Toy winToy = null;
         int sumFallingFrequency = getSumFrequency();
         Random r = new Random();
@@ -37,6 +47,7 @@ public class Gachapon {
                 break;
             }
         }
+        removeTheVoid();
         return winToy;
     }
 

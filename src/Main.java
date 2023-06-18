@@ -1,4 +1,9 @@
-import view.Terminal;
+import controller.CommandParser;
+import controller.CommandParserImpl;
+import controller.Controller;
+import model.Gachapon;
+
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +31,9 @@ public class Main {
         SaveFile newFile = new SaveFileCSW();
         newFile.saveWonToys();
 */
-        Terminal terminal = new Terminal();
-        terminal.start();
+        CommandParser parserToy = new CommandParserImpl();
+        Gachapon gachapon = new Gachapon(new ArrayList<>());
+        Controller controller = new Controller(parserToy,gachapon);
+        controller.start();
     }
 }

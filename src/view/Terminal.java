@@ -20,7 +20,7 @@ public class Terminal {
         userReque.addAll(menuSelection((HashMap<String, MenuActions>) menu));
 
         System.out.println(userReque);
-        return null;
+        return userReque;
     }
 
     public List<String> menuSelection(HashMap<String,MenuActions> menu) {
@@ -38,5 +38,8 @@ public class Terminal {
             return menuSelection(menu);
         }
         return menu.get(input).execute();
+    }
+    public void printAnswer(String answer){
+        System.out.println(answer);
     }
 }

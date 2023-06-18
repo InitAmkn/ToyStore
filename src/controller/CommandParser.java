@@ -1,8 +1,9 @@
 package controller;
 
-public class CommandParser {
-    public Command parser()
-    {
-        return null;
-    }
+import java.util.List;
+
+public interface CommandParser {
+    Command parseCommand(List<String> dataInput);
 }
+
+

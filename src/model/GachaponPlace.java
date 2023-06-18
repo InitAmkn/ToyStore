@@ -12,9 +12,13 @@ public class GachaponPlace {
         setFrequency(frequency);
     }
 
-    public void setQuantity(int quantity) {
+    private void setQuantity(int quantity) {
         if (quantity < 0) this.quantity = 0;
         else this.quantity = quantity;
+    }
+
+    public Toy getToy() {
+        return toy;
     }
 
     public int getQuantity() {

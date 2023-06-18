@@ -18,6 +18,10 @@ public class Toy {
         NOW_ID = NOW_ID + 1;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
 
