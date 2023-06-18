@@ -2,6 +2,9 @@ package controller.executable;
 
 import controller.Command;
 import model.Gachapon;
+import model.Toy;
+import model.fileWork.SaveFile;
+import model.fileWork.SaveFileCSW;
 
 public class PlayExecutable implements CommandExecutable {
     private Gachapon gachapon;
@@ -13,7 +16,10 @@ public class PlayExecutable implements CommandExecutable {
 
     @Override
     public void execute() {
-        this.answer = gachapon.releaseTheWonToy().toString();
+        Toy toy = gachapon.releaseTheWonToy();
+        this.answer = toy.toString();
+        SaveFile saveFileWon = new SaveFileCSW();
+        saveFileWon.saveWonToys(toy);
 
     }
 

@@ -1,10 +1,11 @@
 package model.fileWork;
 
-import java.io.File;
-import java.io.IOException;
+import model.Gachapon;
+import model.Toy;
 
 public interface SaveFile {
 
-    public void saveWonToys();
-    public void gachaToys();
+    public void saveWonToys(Toy wonToy);
+
+    public void allToys(Gachapon gachapon);
 }

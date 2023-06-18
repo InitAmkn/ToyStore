@@ -2,9 +2,12 @@ package controller;
 
 import controller.executable.CommandExecutableFactory;
 import model.Gachapon;
+import model.fileWork.SaveFile;
+import model.fileWork.SaveFileCSW;
 import view.Terminal;
 import controller.executable.CommandExecutable;
 
+import java.io.FileWriter;
 import java.util.List;
 
 public class Controller {
@@ -25,9 +28,9 @@ public class Controller {
             Command command = this.commandParser.parseCommand(request);
             this.commandExecutable = new CommandExecutableFactory().create(command,gachaPon);
             this.commandExecutable.execute();
+            SaveFile saveFile = new SaveFileCSW();
+            saveFile.allToys(this.gachaPon);
             terminal.printAnswer(commandExecutable.getAnswer());
-
-
         }
     }
 }

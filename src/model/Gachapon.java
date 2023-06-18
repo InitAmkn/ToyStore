@@ -15,6 +15,9 @@ public class Gachapon {
     }
 
 
+    public List<GachaponPlace> getToysList() {
+        return toysList;
+    }
 
     public boolean deleteToyByIndex(int id) {
         for (GachaponPlace place : toysList) {

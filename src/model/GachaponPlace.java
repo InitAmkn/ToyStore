@@ -48,4 +48,8 @@ public class GachaponPlace {
         return String.format("%s frequency :%d; quantity :%d",this.toy, this.frequency, this.quantity);
 
     }
+    public String toStringCSV() {
+        return String.format("%s;%d;%d",this.toy.toStringCSW(), this.frequency, this.quantity);
+
+    }
 }
