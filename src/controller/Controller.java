@@ -27,9 +27,18 @@ public class Controller {
     }
 
     public void start() {
-        readingFile();
+        for (String[] request : readFile.readAllToys()) {
+            activatingTheCommand(List.of(request));
+        }
         while (true) {
             List<String> request = terminal.start();
+            activatingTheCommand(request);
+        }
+    }
+
+    private void activatingTheCommand(List<String> request) {
+
+        if (request != null) {
             Command command = this.commandParser.parseCommand(request);
             this.commandExecutable = new CommandExecutableFactory().create(command, gachaPon);
             this.commandExecutable.execute();
@@ -37,18 +46,5 @@ public class Controller {
             terminal.printAnswer(commandExecutable.getAnswer());
         }
     }
-
-    private void readingFile() {
-        List<String[]> commandList = readFile.readAllToys();
-
-        if (commandList != null) {
-            for (String[] item : commandList) {
-                terminal.printAnswer(String.join(" - ",item));
-                Command command = this.commandParser.parseCommand(List.of(item));
-                this.commandExecutable = new CommandExecutableFactory().create(command, gachaPon);
-                this.commandExecutable.execute();
-                terminal.printAnswer(commandExecutable.getAnswer());
-            }
-        }
-    }
 }
+
